@@ -14,12 +14,12 @@ import java.time.Duration;
 public class ApplicationAddToCard {
     public static void main(String[] args) throws InterruptedException {
         System.setProperty("webdriver.chrome.driver","/Users/anna/IdeaProjects/maven_quickstart/src/main/resources/chromedriver");
-        WebDriver driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--incognito");
 //        options.addArguments("--headless");
+        WebDriver driver = new ChromeDriver(options);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         options.addArguments("start-maximized");
         driver.get("https://www.chay.info");
         WebElement webElement = driver.findElement(By.cssSelector(".header__top-controls-item--auth svg"));

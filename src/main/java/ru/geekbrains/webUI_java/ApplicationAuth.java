@@ -21,13 +21,13 @@ public class ApplicationAuth
     public static void main( String[] args )
     {
         System.setProperty("webdriver.chrome.driver","/Users/anna/IdeaProjects/maven_quickstart/src/main/resources/chromedriver");
-        WebDriver driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--incognito");
 //        options.addArguments("--headless");
         options.addArguments("start-maximized");
+        WebDriver driver = new ChromeDriver(options);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         driver.get("https://www.chay.info");
         WebElement webElement = driver.findElement(By.cssSelector(".header__top-controls-item--auth svg"));
 //        new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedCondition.visibilityOf(webElement));
